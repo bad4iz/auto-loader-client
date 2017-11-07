@@ -11,12 +11,21 @@
       app
     >
       <v-list dense>
-        eqwerwerq
-
-        <v-subheader class="mt-3 grey--text text--darken-1">SUBSCRIPTIONS</v-subheader>
+        <v-subheader class="mt-3 grey--text text--darken-1">ВНУТРИ МЕНЮШКА</v-subheader>
+        <v-list>
+          <v-list-tile v-for="item in drawerMenu" v-bind:key="item.title">
+            <v-list-tile-avatar>
+              <v-icon v-if="item.icon" >{{item.icon}}</v-icon>
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <router-link :to="item.href">{{item.title}}</router-link>
+            </v-list-tile-content>
         
-       <router-link to="/">Домашняя</router-link>
-        <router-link to="admin">Админка</router-link>
+          </v-list-tile>
+         </v-list>
+
+
+
         <v-list-tile class="mt-3" @click="">
           <v-list-tile-action>
             <v-icon color="grey darken-1">add_circle_outline</v-icon>
@@ -31,19 +40,13 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar color="red" dense fixed clipped-left app>
+    <v-toolbar color="blue" dense fixed clipped-left app>
       <v-toolbar-title style="width: 300px" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
        
       </v-toolbar-title>
        <v-spacer></v-spacer>
 
-       <v-avatar size="32px" tile>
-          <img
-            src="../assets/logo.png"
-            alt="Vuetify"
-          >
-        </v-avatar>
       <v-spacer></v-spacer>
       <v-layout row align-center style="max-width: 650px">
         <v-text-field
@@ -56,7 +59,24 @@
         ></v-text-field>
       </v-layout>
       <v-spacer></v-spacer>
-      
+        <v-btn icon>
+        <v-icon>apps</v-icon>
+      </v-btn>
+      <v-btn icon>
+          <v-badge color="red">
+          <span slot="badge">6</span>
+          <v-icon>notifications</v-icon>
+        </v-badge>
+     
+      </v-btn>
+      <v-btn icon large>
+       <v-avatar size="40px" tile>
+          <img
+            src="../assets/logo.png"
+            alt="FJV"
+          >
+        </v-avatar>
+      </v-btn>
     </v-toolbar>
     <main>
       <v-content>
@@ -77,7 +97,19 @@
 export default {
   name: 'Main',
   data: () => ({
-    drawer: true
+    drawer: true,
+    drawerMenu: [
+      {
+        icon: 'home',
+        title: 'Домашняя',
+        href: '/'
+      },
+      {
+        icon: 'build',
+        title: 'Админка',
+        href: '/admin'
+      }
+    ]
   }),
   props: {
     source: String
@@ -86,8 +118,11 @@ export default {
 </script>
 
 
-<style>
+<style scoped>
 .input-group__details:after {
   background-color: rgba(255, 255, 255, 0.32) !important;
+}
+.list__tile__content a {
+  text-decoration: none;
 }
 </style>
