@@ -1,7 +1,13 @@
 <template>
   <div>
     <h2>index</h2>
-    {{ msg }}
+    <p>{{ msg }}</p>
+    
+    <p>Сообщение задом наперёд: "{{ reverseMessage }}"</p>
+    <p>Сообщение задом наперёд: "{{ reverseMessage }}"</p>
+  
+
+  <input v-model="msg">
   </div>
 </template>
 
@@ -9,10 +15,17 @@
 
 <script>
 export default {
-  name: 'Hello',
+  name: 'Index',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      msg: 'Faaa',
+      message: 'ssssssssaaaa'
+    }
+  },
+// в компоненте
+  computed: {
+    reverseMessage: function () {
+      return Date.now()
     }
   }
 }

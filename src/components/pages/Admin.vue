@@ -2,6 +2,7 @@
   <div>
     <h2>Admin</h2>
     {{ name }}
+    <button v-on:click="onClick"> нажми </button>
   </div>
 </template>
 
@@ -9,10 +10,15 @@
 
 <script>
 export default {
-  name: 'Hello Admin',
+  name: 'AdminPage',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      name: 'страница администрирования бд'
+    }
+  },
+  methods: {
+    onClick: function () {
+      console.log('click')
     }
   }
 }

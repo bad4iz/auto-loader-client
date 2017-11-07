@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Admin from '@/components/pages/Admin'
 import Index from '@/components/pages/Index'
+import Dark from '@/components/pages/Dark'
 
 import Vuetify from 'vuetify'
 
@@ -18,5 +19,10 @@ export default new Router({
     path: '/admin',
     name: 'Admin',
     component: Admin
+  },
+  {
+    path: '/dark',
+    name: 'Dark',
+    component: Dark
   }]
 })
